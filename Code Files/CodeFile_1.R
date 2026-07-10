@@ -94,7 +94,7 @@ compute_T <- function(pooled, n1, n2, score) {
   c <- c(rep(0, n1), rep(1, n2))
   c_bar <- mean(c)
   
-  # CRITICAL: Divide by sqrt(n) to match asymptotic theory!
+  # CRITICAL: Divide by sqrt(n) to match asymptotic theory
   T_n <- (1 / sqrt(n)) * sum((c - c_bar) * scores)
   #T_n <- (1 / sqrt(n)) * sum(c  * scores)
   return(T_n)
