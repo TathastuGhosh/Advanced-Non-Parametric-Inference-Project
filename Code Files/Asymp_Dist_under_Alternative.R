@@ -10,9 +10,10 @@ library(ggplot2)
 library(dplyr)
 library(tidyr)
 library(gridExtra)
+library(knitr)
 
 # Set seed for reproducibility
-set.seed(123)
+# set.seed(123)
 
 # =============================================================================
 # 1. HELPER FUNCTIONS
@@ -87,6 +88,21 @@ theoretical_params <- function(n1, n2, dist_type, score_type) {
   return(list(mean = mean_T, sd = sd_T))
 }
 
+# Compute Kolmogorov-Smirnov statistic
+compute_ks <- function(empirical_values, theoretical_mean, theoretical_sd) {
+  # Empirical CDF
+  emp_cdf <- ecdf(empirical_values)
+  
+  # Theoretical CDF (normal)
+  theo_cdf <- function(x) pnorm(x, mean = theoretical_mean, sd = theoretical_sd)
+  
+  # Evaluate at grid points
+  x_grid <- seq(min(empirical_values), max(empirical_values), length.out = 1000)
+  max_diff <- max(abs(emp_cdf(x_grid) - theo_cdf(x_grid)))
+  
+  return(as.numeric(max_diff))
+}
+
 # =============================================================================
 # 2. MAIN SIMULATION FUNCTION
 # =============================================================================
@@ -98,6 +114,7 @@ run_simulation <- function(n, n_sim = 2000) {
   
   # Results storage
   all_results <- data.frame()
+  summary_stats <- data.frame()
   
   # Score function definitions
   score_functions <- list(
@@ -131,7 +148,27 @@ run_simulation <- function(n, n_sim = 2000) {
       # Compute theoretical parameters
       theo_params <- theoretical_params(n1, n2, dist_type_lower, score_type)
       
-      # Store results
+      # Compute KS statistic
+      ks_stat <- compute_ks(Tn_values, theo_params$mean, theo_params$sd)
+      
+      # Compute simulated mean and sd
+      sim_mean <- mean(Tn_values)
+      sim_sd <- sd(Tn_values)
+      
+      # Store summary statistics
+      temp_summary <- data.frame(
+        n = as.numeric(n),
+        Score = as.character(score_name),
+        Distribution = as.character(dist_type),
+        Theo_Mean = round(theo_params$mean, 4),
+        Theo_SD = round(theo_params$sd, 4),
+        Sim_Mean = round(sim_mean, 4),
+        Sim_SD = round(sim_sd, 4),
+        KS_Statistic = round(ks_stat, 4)
+      )
+      summary_stats <- rbind(summary_stats, temp_summary)
+      
+      # Store results for plotting
       temp_results <- data.frame(
         Tn = Tn_values,
         n = rep(as.numeric(n), n_sim),
@@ -227,7 +264,8 @@ run_simulation <- function(n, n_sim = 2000) {
   
   return(list(
     combined_plot = combined_plot,
-    results = all_results
+    results = all_results,
+    summary_stats = summary_stats
   ))
 }
 
@@ -239,6 +277,7 @@ sample_sizes <- c(30, 50, 70, 100, 200)
 
 # Store all results
 all_sim_results <- list()
+all_summary_stats <- data.frame()
 
 for (n in sample_sizes) {
   # Adjust simulation iterations based on sample size
@@ -247,7 +286,75 @@ for (n in sample_sizes) {
   result <- run_simulation(n, n_sim = n_sim)
   
   all_sim_results[[as.character(n)]] <- result
+  all_summary_stats <- rbind(all_summary_stats, result$summary_stats)
   
   # Display the plot
   print(result$combined_plot)
 }
+
+# =============================================================================
+# 5. DISPLAY SUMMARY TABLE
+# =============================================================================
+
+cat("\n\n", paste(rep("=", 100), collapse = ""), "\n")
+cat("SUMMARY TABLE: THEORETICAL vs SIMULATED MEAN AND SD\n")
+cat(paste(rep("=", 100), collapse = ""), "\n\n")
+
+# Print the table using kable for better formatting
+print(kable(all_summary_stats, 
+            caption = "Comparison of Theoretical and Simulated Statistics",
+            format = "markdown",
+            align = c("c", "c", "c", "c", "c", "c", "c", "c")))
+
+# =============================================================================
+# 6. CREATE A SUMMARY TABLE PLOT
+# =============================================================================
+
+# Prepare data for plotting KS statistics
+ks_plot_data <- all_summary_stats %>%
+  mutate(Score_Dist = paste(Score, Distribution, sep = " - "))
+
+ks_plot <- ggplot(ks_plot_data, aes(x = as.factor(n), y = KS_Statistic, 
+                                    color = Score_Dist, group = Score_Dist)) +
+  geom_point(size = 3) +
+  geom_line(linewidth = 0.8) +
+  labs(
+    title = "Kolmogorov-Smirnov Statistics by Sample Size",
+    subtitle = "Smaller values indicate better fit to theoretical distribution",
+    x = "Sample Size (n)",
+    y = "KS Statistic",
+    color = "Score - Distribution"
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(hjust = 0.5, face = "bold", size = 14),
+    plot.subtitle = element_text(hjust = 0.5, size = 11),
+    legend.position = "bottom",
+    legend.box = "vertical",
+    panel.grid.minor = element_blank()
+  ) +
+  scale_y_continuous(limits = c(0, NA))
+
+print(ks_plot)
+
+# =============================================================================
+# 7. PRINT THE TABLE AS A SIMPLE TEXT TABLE
+# =============================================================================
+
+cat("\n\n", paste(rep("=", 100), collapse = ""), "\n")
+cat("DETAILED SUMMARY TABLE\n")
+cat(paste(rep("=", 100), collapse = ""), "\n\n")
+
+# Print as a simple text table
+print(all_summary_stats, row.names = FALSE)
+
+# =============================================================================
+# 8. SAVE THE TABLE TO CSV (OPTIONAL)
+# =============================================================================
+
+# Uncomment to save the table
+# write.csv(all_summary_stats, "summary_statistics.csv", row.names = FALSE)
+
+cat("\n\n", paste(rep("=", 100), collapse = ""), "\n")
+cat("SIMULATION COMPLETED SUCCESSFULLY!\n")
+cat(paste(rep("=", 100), collapse = ""), "\n")
