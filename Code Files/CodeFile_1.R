@@ -6,6 +6,7 @@
 # Load libraries
 library(ggplot2)
 library(dplyr)
+library(tidyverse)
 
 # ============================================================================
 # PART 1: THEORETICAL PARAMETERS
