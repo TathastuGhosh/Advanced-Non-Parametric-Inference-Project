@@ -223,6 +223,7 @@ run_simulation <- function(n, n_sim = 2000) {
         alpha = 0.3,
         linewidth = 0.8
       ) +
+      theme_bw() +
       # Labels and theme
       labs(
         title = paste(score_name, "Scores"),
