@@ -6,6 +6,7 @@
 # Load libraries
 library(ggplot2)
 library(dplyr)
+library(tidyverse)
 
 # ============================================================================
 # PART 1: THEORETICAL PARAMETERS
@@ -95,7 +96,7 @@ compute_T <- function(pooled, n1, n2, score) {
   
   # CRITICAL: Divide by sqrt(n) to match asymptotic theory!
   T_n <- (1 / sqrt(n)) * sum((c - c_bar) * scores)
-  
+  #T_n <- (1 / sqrt(n)) * sum(c  * scores)
   return(T_n)
 }
 
