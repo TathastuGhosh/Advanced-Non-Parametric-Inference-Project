@@ -293,6 +293,7 @@ plot_density(n = 50, dist = "logistic", score = "wilcoxon", M = 5000)
 plot_density(n = 50, dist = "logistic", score = "vdw", M = 5000)
 
 
+plot_density(n = 30, dist = "normal", score = "wilcoxon", M = 5000)
 
 
 # 
