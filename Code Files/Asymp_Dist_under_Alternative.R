@@ -232,7 +232,6 @@ run_simulation <- function(n, n_sim = 2000) {
         color = "",
         fill = ""
       ) +
-      theme_minimal() +
       theme(
         plot.title = element_text(hjust = 0.5, face = "bold", size = 12),
         legend.position = "bottom",
