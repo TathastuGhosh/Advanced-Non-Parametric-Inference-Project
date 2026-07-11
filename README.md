@@ -1,6 +1,6 @@
 <div align="center">
 
-# 📘 Application of Le Cam's Lemma in Two-Sample Location Problem and Its Finite-Sample Performance
+# Application of Le Cam's Lemma in Two-Sample Location Problem and Its Finite-Sample Performance
 
 ### Master's Dissertation
 
@@ -59,12 +59,12 @@ The study validates Le Cam's lemma by examining:
 Under the local alternative \(\theta_n = \delta/\sqrt{n}\):
 
 - **Normal Distribution**:
-  - Group 1: \(X \sim N(0, 1)\)
-  - Group 2: \(Y \sim N(\theta_n, 1)\)
+  - Group 1: X ∼ N(0, 1)
+  - Group 2: Y ∼ N(θₙ, 1)
 
 - **Logistic Distribution**:
-  - Group 1: \(X \sim \text{Logis}(0, 1)\)
-  - Group 2: \(Y \sim \text{Logis}(\theta_n, 1)\)
+  - Group 1: X ∼ Logistic(0, 1)
+  - Group 2: Y ∼ Logistic(θₙ, 1)
 
 ### Key Theoretical Parameters
 
