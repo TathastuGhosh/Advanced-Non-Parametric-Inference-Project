@@ -12,7 +12,7 @@ library(tidyverse)
 # ============================================================================
 
 # Standardized g0 values
-g0_wilcoxon_normal <- (1 / (2 * sqrt(pi))) * sqrt(3)    # 0.4886
+g0_wilcoxon_normal <- (1 / (2 * sqrt(pi))) 
 g0_wilcoxon_logistic <- (1 / 6) * sqrt(3)               # 0.2887
 g0_vdw_normal <- 1                                      # 1.0000
 g0_vdw_logistic <- 1 / sqrt(pi)                         # 0.5642
