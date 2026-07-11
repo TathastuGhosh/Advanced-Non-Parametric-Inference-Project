@@ -68,7 +68,7 @@ Under the local alternative \(\theta_n = \delta/\sqrt{n}\):
 
 ### Key Theoretical Parameters
 
-| Distribution | Score | \(g_0\) | \(\sigma^2(\psi)\) | Efficiency |
+| Distribution | Score | g₀ | σ²(ψ) | Efficiency |
 |:---|:---|:---|:---|:---|
 | Normal | Wilcoxon | 0.4886 | 1 | 0.2387 |
 | Normal | **Van der Waerden** | **1.0000** | **1** | **1.0000** |
@@ -77,28 +77,8 @@ Under the local alternative \(\theta_n = \delta/\sqrt{n}\):
 
 ---
 
-## 📈 Results Summary
 
-### Distributional Validation (KS Distances)
-
-The Kolmogorov-Smirnov distances confirm the theoretical optimality of score functions:
-
-| Distribution | Score | n=30 | n=50 | n=70 | n=100 | n=200 |
-|:---|:---|:---|:---|:---|:---|:---|
-| Normal | Wilcoxon | 0.0475 | 0.0358 | 0.0282 | 0.0215 | 0.0118 |
-| Normal | **Van der Waerden** | **0.0324** | **0.0241** | **0.0186** | **0.0132** | **0.0075** |
-| Logistic | **Wilcoxon** | **0.1183** | **0.0952** | **0.0825** | **0.0684** | **0.0452** |
-| Logistic | Van der Waerden | 0.1856 | 0.1687 | 0.1554 | 0.1432 | 0.1258 |
-
-### Power Analysis
-
-The hierarchy of power is consistently maintained across all sample sizes:
-
-\[
-\text{Normal + VdW} > \text{Logistic + Wilcoxon} > \text{Normal + Wilcoxon} > \text{Logistic + VdW}
-\]
-
-### Key Findings
+## Key Findings
 
 1. **Optimality Confirmed**: The Van der Waerden score is optimal for Normal data; the Wilcoxon score is optimal for Logistic data.
 
