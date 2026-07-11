@@ -68,12 +68,12 @@ Under the local alternative \(\theta_n = \delta/\sqrt{n}\):
 
 ### Key Theoretical Parameters
 
-| Distribution | Score | g₀ | σ²(ψ) | Efficiency |
-|:---|:---|:---|:---|:---|
-| Normal | Wilcoxon | 0.4886 | 1 | 0.2387 |
-| Normal | **Van der Waerden** | **1.0000** | **1** | **1.0000** |
-| Logistic | **Wilcoxon** | **0.2887** | **1/3** | **0.2500** |
-| Logistic | Van der Waerden | 0.5642 | 1/3 | 0.9549 |
+| Distribution | Score | g₀ | σ²(ψ) |
+|:---|:---|:---|:---|
+| Normal | Wilcoxon | 0.4886 | 1 |
+| Normal | **Van der Waerden** | **1.0000** | **1** | 
+| Logistic | **Wilcoxon** | **0.2887** | **1/3** | 
+| Logistic | Van der Waerden | 0.5642 | 1/3 | 
 
 ---
 
