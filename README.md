@@ -1,6 +1,6 @@
 <div align="center">
 
-# 📘 Application of Le Cam's Lemma in Two-Sample Location Problem and Its Finite-Sample Performance
+# Application of Le Cam's Lemma in Two-Sample Location Problem and Its Finite-Sample Performance
 
 ### Master's Dissertation
 
