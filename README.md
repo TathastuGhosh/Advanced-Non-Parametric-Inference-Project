@@ -1,7 +1,26 @@
-# Application of Le Cam's Lemma in Two-Sample Location Problem and Its Finite-Sample Performance
+<div align="center">
 
-[![R](https://img.shields.io/badge/R-4.0+-blue.svg)](https://www.r-project.org/)
-[![Status](https://img.shields.io/badge/Status-Complete-success.svg)]()
+# 📘 Application of Le Cam's Lemma in Two-Sample Location Problem and Its Finite-Sample Performance
+
+### Master's Dissertation
+
+**Tathastu Ghosh**
+
+*M.Sc. Statistics*  
+**Department of Statistics**  
+**University of Calcutta**
+
+<br>
+
+[![R](https://img.shields.io/badge/R-4.0+-276DC3?style=for-the-badge&logo=r)](https://www.r-project.org/)
+![Master's Dissertation](https://img.shields.io/badge/Master's-Dissertation-8A2BE2?style=for-the-badge)
+![Monte Carlo Simulation](https://img.shields.io/badge/Monte%20Carlo-Simulation-009688?style=for-the-badge)
+![Nonparametric Statistics](https://img.shields.io/badge/Nonparametric-Statistics-E91E63?style=for-the-badge)
+![University of Calcutta](https://img.shields.io/badge/University%20of-Calcutta-7B1FA2?style=for-the-badge)
+
+</div>
+
+---
 
 ## 📖 Overview
 
