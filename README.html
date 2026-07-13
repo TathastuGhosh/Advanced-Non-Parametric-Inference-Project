@@ -377,9 +377,13 @@ local alternatives through extensive Monte Carlo simulations.</p>
 <p>The study validates Le Cam’s lemma by examining: -
 <strong>Distributional Validation</strong>: Assessing how well the
 asymptotic normal distribution approximates finite-sample distributions
-- <strong>Power Analysis</strong>: Evaluating the accuracy of asymptotic
-power approximations and demonstrating optimality properties of score
-functions</p>
+under local alternatives - <strong>Power Analysis (First
+Perspective)</strong>: Evaluating the accuracy of asymptotic power
+approximations by varying the effect size <span class="math inline">\(\theta\)</span> for fixed sample sizes -
+<strong>Power Analysis (Second Perspective)</strong>: Examining the
+convergence of empirical power to the asymptotic power by fixing the
+effect size <span class="math inline">\(\theta = 1\)</span> and varying
+the sample size <span class="math inline">\(n\)</span></p>
 <div id="key-features" class="section level3">
 <h3>Key Features</h3>
 <ul>
@@ -388,7 +392,8 @@ functions</p>
 <li>✅ Support for Normal and Logistic distributions</li>
 <li>✅ Kolmogorov-Smirnov distance computation for distributional
 validation</li>
-<li>✅ Theoretical and empirical power curve generation</li>
+<li>✅ Theoretical and empirical power curve generation (two
+perspectives)</li>
 <li>✅ Publication-ready plots and tables</li>
 <li>✅ Fully reproducible results with fixed random seeds</li>
 </ul>
@@ -430,7 +435,7 @@ validation</li>
 </tr>
 <tr class="even">
 <td align="left"><strong>Local Shift</strong></td>
-<td align="left">δ = 1</td>
+<td align="left">θ = 1</td>
 <td align="left">Fixed local alternative parameter</td>
 </tr>
 <tr class="odd">
@@ -444,7 +449,7 @@ validation</li>
 <div id="data-generation" class="section level3">
 <h3>Data Generation</h3>
 <p>Under the local alternative <span class="math inline">\(\theta_n =
-\delta/\sqrt{n}\)</span>:</p>
+\theta/\sqrt{n}\)</span>:</p>
 <ul>
 <li><strong>Normal Distribution</strong>:
 <ul>
@@ -499,6 +504,120 @@ validation</li>
 <hr />
 </div>
 </div>
+<div id="results-summary" class="section level2">
+<h2>📈 Results Summary</h2>
+<div id="distributional-validation-ks-distances" class="section level3">
+<h3>Distributional Validation (KS Distances)</h3>
+<p>The Kolmogorov-Smirnov distances confirm the theoretical optimality
+of score functions:</p>
+<table style="width:100%;">
+<colgroup>
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Distribution</th>
+<th align="left">Score</th>
+<th align="left">n=30</th>
+<th align="left">n=50</th>
+<th align="left">n=70</th>
+<th align="left">n=100</th>
+<th align="left">n=200</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Normal</td>
+<td align="left">Wilcoxon</td>
+<td align="left">0.0475</td>
+<td align="left">0.0358</td>
+<td align="left">0.0282</td>
+<td align="left">0.0215</td>
+<td align="left">0.0118</td>
+</tr>
+<tr class="even">
+<td align="left">Normal</td>
+<td align="left"><strong>Van der Waerden</strong></td>
+<td align="left"><strong>0.0324</strong></td>
+<td align="left"><strong>0.0241</strong></td>
+<td align="left"><strong>0.0186</strong></td>
+<td align="left"><strong>0.0132</strong></td>
+<td align="left"><strong>0.0075</strong></td>
+</tr>
+<tr class="odd">
+<td align="left">Logistic</td>
+<td align="left"><strong>Wilcoxon</strong></td>
+<td align="left"><strong>0.1183</strong></td>
+<td align="left"><strong>0.0952</strong></td>
+<td align="left"><strong>0.0825</strong></td>
+<td align="left"><strong>0.0684</strong></td>
+<td align="left"><strong>0.0452</strong></td>
+</tr>
+<tr class="even">
+<td align="left">Logistic</td>
+<td align="left">Van der Waerden</td>
+<td align="left">0.1856</td>
+<td align="left">0.1687</td>
+<td align="left">0.1554</td>
+<td align="left">0.1432</td>
+<td align="left">0.1258</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="power-analysis---first-perspective-fixed-n-varying-θ" class="section level3">
+<h3>Power Analysis - First Perspective (Fixed n, Varying θ)</h3>
+<p>The hierarchy of power is consistently maintained across all sample
+sizes:</p>
+<p><span class="math display">\[
+\text{Normal + VdW} &gt; \text{Logistic + Wilcoxon} &gt; \text{Normal +
+Wilcoxon} &gt; \text{Logistic + VdW}
+\]</span></p>
+</div>
+<div id="power-analysis---second-perspective-fixed-θ-1-varying-n" class="section level3">
+<h3>Power Analysis - Second Perspective (Fixed θ = 1, Varying n)</h3>
+<p>The convergence of empirical power to the asymptotic power
+reveals:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Combination</th>
+<th align="left">Convergence Rate</th>
+<th align="left">Gap at n=200</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><strong>Normal + VdW</strong></td>
+<td align="left"><strong>Fastest</strong></td>
+<td align="left"><strong>~0.0005</strong></td>
+</tr>
+<tr class="even">
+<td align="left">Logistic + Wilcoxon</td>
+<td align="left">Fast</td>
+<td align="left">~0.0011</td>
+</tr>
+<tr class="odd">
+<td align="left">Normal + Wilcoxon</td>
+<td align="left">Slow</td>
+<td align="left">~0.0218</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>Logistic + VdW</strong></td>
+<td align="left"><strong>Slowest</strong></td>
+<td align="left"><strong>~0.0202</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div>
+</div>
 <div id="key-findings" class="section level2">
 <h2>Key Findings</h2>
 <ol style="list-style-type: decimal">
@@ -513,6 +632,11 @@ asymptotic normal approximations as sample size increases.</p></li>
 <li><p><strong>Heavier Tails</strong>: Logistic distribution exhibits
 slower convergence and lower power ceilings compared to Normal
 distribution.</p></li>
+<li><p><strong>Rate of Convergence</strong>: The rate at which empirical
+power approaches the asymptotic limit depends critically on the
+alignment between the score function and the underlying distribution.
+Optimal combinations converge rapidly, while sub-optimal combinations
+exhibit persistent gaps even at larger sample sizes.</p></li>
 </ol>
 <hr />
 </div>
