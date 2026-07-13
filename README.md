@@ -103,12 +103,12 @@ Normal + VdW > Logistic + Wilcoxon > Normal + Wilcoxon > Logistic + VdW
 
 The convergence of empirical power to the asymptotic power reveals:
 
-| Combination | Convergence Rate | Gap at n=200 |
+| Combination | Convergence Rate | 
 |:---|:---|:---|
-| **Normal + VdW** | **Fastest** | **~0.0005** |
-| Logistic + Wilcoxon | Fast | ~0.0011 |
-| Normal + Wilcoxon | Slow | ~0.0218 |
-| **Logistic + VdW** | **Slowest** | **~0.0202** |
+| **Normal + VdW** | **Fastest** | 
+| Logistic + Wilcoxon | Fast | 
+| Normal + Wilcoxon | Slow |
+| **Logistic + VdW** | **Slowest** | 
 
 ---
 
