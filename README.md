@@ -29,7 +29,7 @@ This repository contains the complete R code, simulation scripts, and visualizat
 The study validates Le Cam's lemma by examining:
 - **Distributional Validation**: Assessing how well the asymptotic normal distribution approximates finite-sample distributions under local alternatives
 - **Power Analysis (First Perspective)**: Evaluating the accuracy of asymptotic power approximations by varying the effect size \(\theta\) for fixed sample sizes
-- **Power Analysis (Second Perspective)**: Examining the convergence of empirical power to the asymptotic power by fixing the effect size \(\theta = 1\) and varying the sample size \(n\)
+- **Power Analysis (Second Perspective)**: Examining the convergence of empirical power to the asymptotic power by fixing the effect size θ = 1 and varying the sample size n
 
 ### Key Features
 
@@ -57,7 +57,7 @@ The study validates Le Cam's lemma by examining:
 
 ### Data Generation
 
-Under the local alternative \(\theta_n = \theta/\sqrt{n}\):
+Under the local alternative θₙ = θ/√n
 
 - **Normal Distribution**:
   - Group 1: X ∼ N(0, 1)
