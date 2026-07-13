@@ -103,12 +103,12 @@ Normal + VdW > Logistic + Wilcoxon > Normal + Wilcoxon > Logistic + VdW
 
 The convergence of empirical power to the asymptotic power reveals:
 
-| Combination | Convergence Rate | 
-|:---|:---|:---|
-| **Normal + VdW** | **Fastest** | 
-| Logistic + Wilcoxon | Fast | 
+| Combination | Convergence Rate |
+|:------------|:-----------------|
+| **Normal + Van der Waerden** | **Fastest** |
+| Logistic + Wilcoxon | Fast |
 | Normal + Wilcoxon | Slow |
-| **Logistic + VdW** | **Slowest** | 
+| **Logistic + Van der Waerden** | **Slowest** |
 
 ---
 
