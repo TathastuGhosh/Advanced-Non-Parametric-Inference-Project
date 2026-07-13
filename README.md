@@ -95,9 +95,9 @@ The Kolmogorov-Smirnov distances confirm the theoretical optimality of score fun
 
 The hierarchy of power is consistently maintained across all sample sizes:
 
-\[
-\text{Normal + VdW} > \text{Logistic + Wilcoxon} > \text{Normal + Wilcoxon} > \text{Logistic + VdW}
-\]
+
+Normal + VdW > Logistic + Wilcoxon > Normal + Wilcoxon > Logistic + VdW
+
 
 ### Power Analysis - Second Perspective (Fixed θ = 1, Varying n)
 
